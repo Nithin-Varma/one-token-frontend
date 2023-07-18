@@ -13,25 +13,25 @@ const Layout = ({ children }: LayoutProps) => {
   const bottomColor = useColorModeValue('#FFFFFF', '#1A202C');
   return (
     <Box 
-     margin="0 auto" 
-     transition="0.5s ease-out"
-     position="fixed"
-     top={0}
-     left={0}
-     right={0}
-     bottom="30%"
-     bgGradient={`linear(to bottom, ${topColor}, ${bottomColor})`}
+    minHeight="30vh" 
+    margin={'6'}
+    // textAlign={'start'}
+    //  margin="0 auto" 
+    //  transition="0.5s ease-out"
+    //  position="fixed"
+    //  top={0}
+    //  left={0}
+    //  right={0}
+    //  bottom="30%"
+    //  bgGradient={`linear(to bottom, ${topColor}, ${bottomColor})`}
      >
       <Meta />
-      <Flex wrap={'wrap'} margin="4" align={'center'} minHeight="60vh" justifyContent={'center'}>
+      <Box  >
         <Header />
-        <Heading textAlign={'center'}>
-          One - Token
-        </Heading>
-        <Box width="full" as="main" marginY={22}>
+        <Box>
           {children}
         </Box>
-      </Flex>
+      </Box>
     </Box>
   );
 };
