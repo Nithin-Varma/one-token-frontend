@@ -8,26 +8,26 @@ const InputAndButtons = () => {
         <Box >
           <VStack spacing={'6'} align={'start'}>
             <InputGroup w={['100%', '400px', '700px']}>
-              <Input 
+              <Input
                 placeholder='Enter Address Here...'
               />
             </InputGroup>
             <InputGroup paddingBottom={'8'} w={['100%', '200px', '300px']}>
-              <Input 
+              <Input
                 placeholder='Amount here'
               />
             </InputGroup>
-            </VStack>
-              <Button 
-                bg={'#6C0BA9'}
-                color={'white'}
-                paddingX={['6', '10']}
-                _hover={{
-                  bg: '#51087E'
-                }}
-              >
-                Send
-              </Button>
+          </VStack>
+          <Button
+            bg={'#6C0BA9'}
+            color={'white'}
+            paddingX={['6', '10']}
+            _hover={{
+              bg: '#51087E'
+            }}
+          >
+            Send
+          </Button>
         </Box>
       </VStack>
     </Box>
