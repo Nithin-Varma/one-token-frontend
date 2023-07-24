@@ -2,7 +2,7 @@ import { ColorModeScript } from "@chakra-ui/react";
 import * as React from "react";
 import ReactDOM from "react-dom/client";
 
-import { WagmiConfig, configureChains, createConfig } from 'wagmi'
+import { WagmiConfig, configureChains, createConfig, usePublicClient } from 'wagmi'
 import { sepolia, polygonMumbai } from 'wagmi/chains'
 import { alchemyProvider } from 'wagmi/providers/alchemy'
 
@@ -16,6 +16,7 @@ const { chains, publicClient, webSocketPublicClient } = configureChains(
   })
   ],
 )
+
 const config = createConfig({
   autoConnect: true,
   publicClient,
@@ -28,6 +29,7 @@ import "@fontsource/plus-jakarta-sans/latin.css";
 import { theme } from "lib/styles/theme";
 
 import App from "./App";
+import { POLY_CHAIN_ID } from "consts";
 
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
