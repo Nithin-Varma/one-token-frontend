@@ -33,6 +33,7 @@ export const useTransactionsHistory = () => {
         console.log({ polygonLogs })
         //@ts-ignore
         const properEthLogs = ethLogs.length > 10 ? ethLogs.sort((a, b) => parseInt(b!.blockNumber) - parseInt(a!.blockNumber!)).slice(0, 10) : ethLogs
+        //@ts-ignore
         const properPolygonLogs = polygonLogs.length > 10 ? polygonLogs.sort((a, b) => parseInt(b!.blockNumber) - parseInt(a!.blockNumber!)).slice(0, 10) : polygonLogs
 
         const ethTransactions: Transaction[] = []
