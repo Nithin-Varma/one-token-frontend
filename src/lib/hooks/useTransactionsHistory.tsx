@@ -102,30 +102,30 @@ export const useTransactionsHistory = () => {
 
 
 
-    const unWatchEth = useContractEvent({
-        address: ETH_TOKEN_ADDRESS,
-        abi: tokenAbi,
-        eventName: 'Transfer',
-        chainId: ETH_CHAIN_ID,
-        async listener(log) {
-            console.log({ log });
-            await refresh()
-        }
+    // const unWatchEth = useContractEvent({
+    //     address: ETH_TOKEN_ADDRESS,
+    //     abi: tokenAbi,
+    //     eventName: 'Transfer',
+    //     chainId: ETH_CHAIN_ID,
+    //     async listener(log) {
+    //         console.log({ log });
+    //         await refresh()
+    //     }
 
-    })
-    const unWatchPoly = useContractEvent({
-        address: POLY_TOKEN_ADDRESS,
-        abi: tokenAbi,
-        eventName: 'Transfer',
-        chainId: POLY_CHAIN_ID,
-        async listener(log) {
-            console.log({ log })
-            await refresh()
-        }
-    })
+    // })
+    // const unWatchPoly = useContractEvent({
+    //     address: POLY_TOKEN_ADDRESS,
+    //     abi: tokenAbi,
+    //     eventName: 'Transfer',
+    //     chainId: POLY_CHAIN_ID,
+    //     async listener(log) {
+    //         console.log({ log })
+    //         await refresh()
+    //     }
+    // })
     useEffect(() => {
         refresh()
-        return () => { unWatchEth?.(); unWatchPoly?.() }
+        // return () => { unWatchEth?.(); unWatchPoly?.() }
     }, [])
 
     return {

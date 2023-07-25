@@ -2,13 +2,17 @@ import { Divider, Grid, Text, Center, Box, HStack, Stack, VStack, Code, Absolute
 import InputAndButtons from "./components/InputAndButtons";
 import Transactions from "./components/PolygonTransactions";
 import { ETH_CHAIN_ID, ETH_TOKEN_ADDRESS, POLY_CHAIN_ID, POLY_TOKEN_ADDRESS } from "../../../consts";
-import { useAccount, useConnect } from "wagmi";
+import { useAccount, useConnect, useNetwork, useSwitchNetwork } from "wagmi";
 import { MetaMaskConnector } from "wagmi/connectors/metaMask"
+import { DragHandleIcon } from "@chakra-ui/icons"
 import GetFaucets from "./components/GetFaucet";
 
 const AddToken = () => {
   const { connector, isConnected, } = useAccount()
   const { connect } = useConnect()
+  const { chains, error, isLoading: isSwitchingLoading, pendingChainId, switchNetwork } =
+    useSwitchNetwork()
+  const { chain } = useNetwork()
   const toast = useToast()
   const addToken = () => {
     console.log(connector?.name)
@@ -66,6 +70,17 @@ const AddToken = () => {
       </Text>
       <Button colorScheme="cyan" onClick={addToken}>
         Add Token
+      </Button>
+      <Text>
+        {`You are Currently Connected with`} <Code colorScheme={chain?.id === ETH_CHAIN_ID ? "linkedin" : "purple"}>{chain?.name} </Code>Network
+
+      </Text>
+      <Button colorScheme='teal' onClick={() => {
+        switchNetwork?.(
+          chain?.id === ETH_CHAIN_ID ? POLY_CHAIN_ID : ETH_CHAIN_ID
+        )
+      }} loadingText="Switching..." isLoading={isSwitchingLoading} leftIcon={<DragHandleIcon />} variant='link'>
+        Switch Network
       </Button>
     </>)
 }
